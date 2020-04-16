@@ -3,4 +3,4 @@ Scripts and stylesheet for biodigital human activity. The purpose is to be able 
 
 The URLs for loading these scripts will be available through https://www.jsdelivr.com/
 
-This activity is for programatically changing biodigital chapters with Storyine triggers.
+This activity is for programmatically changing biodigital chapters with Storyine triggers.
