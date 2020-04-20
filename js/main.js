@@ -1,12 +1,13 @@
 /*
  * @license Copyright 2020 S4 NetQuest, LTD.
- * @preserve version	1.0.0
- * @preserve date	04.16.2020
+ * @preserve version	1.0.1
+ * @preserve date	04.20.2020
  *
  * Interaction with biodigital human API
  *
  * REVISIONS
  * 20200416 SHS - Initial commit
+ * 20200420 SHS - Removed leftover code, dev key assigned to window in index.html
  */
 
 //Storyline
@@ -14,8 +15,11 @@ var player = new Player().init();
 var chapters = [];
 
 if (player != null) {
-  document.getElementById("myWidget").setAttribute("src", player.GetVar("biodigitalPath") + '&dk=' + player.GetVar("biodigitalKey") + '&lang=' + player.GetVar("lang"));
+  document.getElementById("myWidget").setAttribute("src", player.GetVar("biodigitalPath") + '&dk=' + window.biodigitalDevKey + '&lang=' + player.GetVar("lang"));
 }
+
+var version = "1.0.1";
+console.log("main.js version:",version);
 
 var human = new HumanAPI("myWidget");
 
@@ -88,7 +92,7 @@ function storyEvent(detail) {
 
 human.once("human.ready", function () {
   console.log("***human.ready***");
-  if (player != null) player.SetVar("humanReady", Math.random().toString().slice(2, 11));
+  player.SetVar("humanReady", Math.random().toString().slice(2, 11));
 
   human.send("timeline.info", function (data) {
     console.log("data.chapters: ", data.chapters);
